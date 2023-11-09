@@ -15,10 +15,12 @@ services:
     image: postgres:13
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
     environment:
-      - POSTGRES_USER=postgresUser
-      - POSTGRES_PASSWORD=postgresPassword
-      - POSTGRES_DB=postgresDb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
 
   pgadmin:
     container_name: pgadmin_db_lundiMatin
