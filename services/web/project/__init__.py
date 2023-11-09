@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify , render_template
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -20,7 +20,7 @@ class User(db.Model):
     email = db.Column(db.String(128), unique=True, nullable=False)
     active = db.Column(db.Boolean(), default=True, nullable=False)
 
-    def __init__(self, name, phone, adress, city, zipCode,email):
+    def __init__(self, name, phone, adress, city, zipCode,email, active=True):
         self.name = name
         self.phone = phone
         self.adress = adress
@@ -31,4 +31,4 @@ class User(db.Model):
 
 @app.route("/")
 def hello_world():
-    return jsonify(hello="world")
+    return render_template('index.html')
