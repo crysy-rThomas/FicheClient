@@ -32,9 +32,12 @@ class User(db.Model):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == 'POST':
-        #find user by name
-        user = User.query.filter_by(name=request.form['name']).all()
-        return render_template("index.html", contats=user)
+       #redirect to home if name is empty
+        if request.form['name'] == '':
+            return redirect("/")
+         #find user that contains the name
+        user = User.query.filter(User.name.contains(request.form['name'])).all()
+        return render_template("index.html", contacts=user)
     else:
         contacts = User.query.all()
         return render_template("index.html", contacts=contacts)
