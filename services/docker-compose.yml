@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./web
+    command: gunicorn --bind 0.0.0.0:5000 manage:app
+    volumes:
+      - ./web/:/usr/src/app/
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env.dev
+
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgresUser
+      - POSTGRES_PASSWORD=postgresPassword
+      - POSTGRES_DB=postgresDb
+
+  pgadmin:
+    container_name: pgadmin_db_lundiMatin
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+
+volumes:
+  postgres_data:
+
