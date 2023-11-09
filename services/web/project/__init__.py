@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request ,redirect
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -37,18 +37,30 @@ def index():
         return render_template("index.html", contats=user)
     else:
         contacts = User.query.all()
-        return render_template("index.html", contats=contacts)
+        return render_template("index.html", contacts=contacts)
 
 @app.route("/voir/<int:id>", methods=["GET"])
 def voir(id):
     user = User.query.filter_by(id=id).first()
-    return render_template("voir.html", user=user)
+    userName = user.name.split(' ')
+    return render_template("voir.html", user=user, userName=userName)
 
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit(id):
+    user = User.query.filter_by(id=id).first()
+    userName = user.name.split(' ')
     if request.method == 'POST':
-        #find user by id and update data
-        return "WIP"
+        user.name = request.form['name']
+        user.phone = request.form['phone']
+        user.adress = request.form['adress']
+        user.city = request.form['city']
+        user.zipCode = request.form['zipCode']
+        user.email = request.form['email']
+
+        try:
+            db.session.commit()
+            return redirect("/")
+        except:
+            return "There was a problem updating data."
     else:
-        user = User.query.filter_by(id=id).first()
-        return render_template("edit.html", user=user)
+        return render_template("edit.html", user=user, userName=userName)
