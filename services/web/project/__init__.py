@@ -1,4 +1,4 @@
-from flask import Flask, jsonify , render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -29,6 +29,12 @@ class User(db.Model):
         self.email = email
 
 
-@app.route("/")
-def hello_world():
-    return render_template('index.html')
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == 'POST':
+        #find user by name
+        user = User.query.filter_by(name=request.form['name']).all()
+        return render_template("index.html", contats=user)
+    else:
+        users = User.query.all()
+        return render_template("index.html", contats=users)
