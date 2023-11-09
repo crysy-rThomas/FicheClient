@@ -11,7 +11,7 @@
 <div class="container shadow p-3 mb-5 bg-white rounded mt-5">
     <h6 class="">Renseigner un nom ou une dénomination</h6>
     <form action="/",method="POST">
-        <input type="text" name="nom" placeholder="Nom de votre contact">
+        <input type="text" name="name" placeholder="Nom de votre contact">
         <input type="submit" value="Rechercher">
     </form>
 
@@ -31,7 +31,7 @@
                 <td>{{ contact.adress }}</td>
                 <td>{{ contact.zipCode }} {{ contact.city }}</td>
                 <td>{{ contact.phone }}</td>
-                <td><a href='/voir/{{conctat.id}}'>Voir</a></td>
+                <td><a href='/voir/{{contact.id}}'>Voir</a></td>
             </tr>
             {% endfor %}
         {% else %}
