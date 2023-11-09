@@ -11,7 +11,7 @@
                 <h5 class="text-left text-">{{userName[0]}} <b>{{userName[1]}}</b></h5>
             </div>
             <div class="col-md-6 text-right">
-                <button class="bg-orange rounded text-white p-1 pl-3 pr-3" href="/edit/{{user.id}}">Editer</button>
+                <a class="btn bg-orange rounded text-white p-1 pl-3 pr-3" href="/edit/{{user.id}}">Editer</a>
             </div>
 
         </div>
@@ -50,8 +50,8 @@
         </div>
         <div class="container border-top text-right p-3">
             <!-- cancel button -->
-            <button class=" bg-white border rounded text-secondary p-1 pl-3 pr-3" href="/voir/{{ user.id }}">Annuler</button>
-            <input class="bg-success rounded text-white p-1 pl-3 pr-3" type="submit" value="Enregistrer">
+            <a class=" btn bg-white border rounded text-secondary p-1 pl-3 pr-3" href="/voir/{{ user.id }}">Annuler</a>
+            <input class="btn bg-success rounded text-white p-1 pl-3 pr-3" type="submit" value="Enregistrer">
         </div>
         
     </form>

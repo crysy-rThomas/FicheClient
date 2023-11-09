@@ -3,9 +3,15 @@
 {% block content %}
 
 <div class="container shadow p-3 mb-5 bg-white rounded mt-5">
-    <!-- separate the firstname and the lastname -->    
-    <h5 class="text-left text-">{{userName[0]}} <b>{{userName[1]}}</b></h5>
-    <a href="/edit/{{user.id}}">Editer</a>
+    <div class="row">
+        <div class="col-md-6 text-left">
+            <!-- separate the firstname and the lastname -->   
+            <h5 class="text-left text-">{{userName[0]}} <b>{{userName[1]}}</b></h5>
+        </div>
+        <div class="col-md-6 text-right">
+            <a  class="btn bg-orange rounded text-white p-1 pl-3 pr-3" href="/edit/{{user.id}}">Editer</a>
+        </div>
+    </div>
 
 </div>
 
