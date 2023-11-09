@@ -5,19 +5,19 @@
 <div class="container shadow p-3 mb-5 bg-white rounded mt-5">
 
     <h5 class="text-left text-">{{user.name}}</h5>
+    
     <a href="/edit/{{user.id}}">Editer</a>
 
 </div>
 
 <div class="container card shadow p-3 mb-5 bg-white rounded mt-5">
 
-    <h5 class="card-head">INFORMATIONS</h5>
-    <div class="card-body">
-        <p>Prénom & Nom | {{ user.name }}</p>
-        <p>Téléphone | {{ user.phone }}</p>
-        <p>Email | {{ user.email }}</p>
-        <p>Adresse | {{ user.adress }}</p>
-    </div>
+    <h6 class="card-head">INFORMATIONS</h6>
+        <p>Prénom & Nom : {{ user.name }}</p>
+        <p>Téléphone : {{ user.phone }}</p>
+        <p>Email : {{ user.email }}</p>
+        <p>Adresse : {{ user.adress }}</p>
+    </form>
 
 </div>
 

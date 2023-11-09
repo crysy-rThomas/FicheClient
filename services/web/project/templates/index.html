@@ -17,27 +17,29 @@
 
 </div class="container shadow p-3 mb-5 bg-white rounded mt-5">
     <table class="table">
-        <thead>
-            <tr>
-                <th>Prénom & Nom</th>
-                <th>Adresse</th>
-                <th>Ville</th>
-                <th>Téléphone</th>
-            </tr>
-        </thead>
-        <tbody>
+        <tr>
+            <th>Prénom & Nom</th>
+            <th>Adresse</th>
+            <th>Ville</th>
+            <th>Téléphone</th>
+            <th></th>
+        </tr>
+        {% if contacts %}
             {% for contact in contacts %}
             <tr>
                 <td>{{ contact.name }}</td>
                 <td>{{ contact.adress }}</td>
-                <td>{{contact.zipCode}} {{ contact.city }}</td>
+                <td>{{ contact.zipCode }} {{ contact.city }}</td>
                 <td>{{ contact.phone }}</td>
-                <td><a href='/voir.html/{{conctat.id}}'>Voir</a></td>
+                <td><a href='/voir/{{conctat.id}}'>Voir</a></td>
             </tr>
             {% endfor %}
-        </tbody>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun contact trouvé</td>
+            </tr>
+        {% endif %}
     </table>
-
 <div>
 
 

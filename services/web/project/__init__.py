@@ -36,18 +36,16 @@ def index():
         user = User.query.filter_by(name=request.form['name']).all()
         return render_template("index.html", contats=user)
     else:
-        users = User.query.all()
-        return render_template("index.html", contats=users)
+        contacts = User.query.all()
+        return render_template("index.html", contats=contacts)
 
 @app.route("/voir/<int:id>", methods=["GET"])
-def voir():
+def voir(id):
     user = User.query.filter_by(id=id).first()
     return render_template("voir.html", user=user)
 
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
-def edit():
-
-
+def edit(id):
     if request.method == 'POST':
         #find user by id and update data
         return "WIP"
