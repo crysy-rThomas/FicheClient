@@ -2,27 +2,29 @@
 
 {% block content %}
 
-<div class="container shadow p-3 mb-5 bg-white rounded mt-5">
+<div class="container shadow p-3 mb-5 bg-white rounded mt-5 border">
 
     <h5 class="text-left text-">Recherche d'une fiche de contact</h5>
 
 </div>
 
-<div class="container shadow p-3 mb-5 bg-white rounded mt-5">
-    <h6 class="">Renseigner un nom ou une dénomination</h6>
+<div class="container shadow p-3 mb-5 bg-white rounded mt-5 border text-center">
+    <h6 class="font-weight-bold">Renseigner un nom ou une dénomination</h6>
     <form action="/",method="POST">
-        <input type="text" name="name" placeholder="Nom de votre contact">
-        <input type="submit" value="Rechercher">
+        <input class="w-50" type="text" name="name" placeholder="Nom de votre contact"><br>
+        <input class="bg-orange text-white p-1 pl-3 pr-3 rounded" type="submit" value="Rechercher">
     </form>
 
-</div class="container shadow p-3 mb-5 bg-white rounded mt-5">
-    <table class="table">
+</div>
+    <table class="table container shadow p-3 mb-5 bg-white rounded mt-5 border">
         <tr>
-            <th>Prénom & Nom</th>
-            <th>Adresse</th>
-            <th>Ville</th>
-            <th>Téléphone</th>
-            <th></th>
+            <thead class=" bg-light">
+                <th>Prénom & Nom</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Téléphone</th>
+                <th></th>
+            </thead>
         </tr>
         {% if contacts %}
             {% for contact in contacts %}
@@ -31,7 +33,7 @@
                 <td>{{ contact.adress }}</td>
                 <td>{{ contact.zipCode }} {{ contact.city }}</td>
                 <td>{{ contact.phone }}</td>
-                <td><a href='/voir/{{contact.id}}'>Voir</a></td>
+                <td><a class="rounded-pill bg-primary text-white p-1" href="/voir/{{contact.id}}">Voir</a></td>
             </tr>
             {% endfor %}
         {% else %}
